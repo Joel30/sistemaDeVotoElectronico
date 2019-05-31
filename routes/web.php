@@ -29,5 +29,5 @@ Route::post('elector/guardar', 'ElectorController@store')->name('elector.store')
 
 Route::get('voto', 'VotoController@index')->name('voto.index');
 Route::get('voto/candidatos', 'VotoController@enter')->name('voto.enter');
-Route::put('voto/{elector}', 'VotoController@update')->name('voto.update');
-Route::post('voto/resultado', 'VotoController@store')->name('voto.store');
+Route::post('voto/actualizar', 'VotoController@update')->name('voto.update');
+Route::get('voto/resultado', 'VotoController@show')->name('voto.show');

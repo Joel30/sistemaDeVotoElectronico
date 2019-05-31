@@ -49,7 +49,7 @@ class VotoController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -58,9 +58,10 @@ class VotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $result = Voto::all();
+        return view('voto.result')->with('result', $result);
     }
 
     /**
@@ -81,30 +82,17 @@ class VotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Electore $elector, Request $request)
+    public function update(Request $request)
     {
-        $data['voto'] = 1;
-        $elector->update($data);
+        $elector = Electore::find($request['elector']);
+        $elector -> voto = 1;
+        $elector->save();
 
-        $persona = Voto::find($request['id']);
-        $persona->nombres = $request['nombres'];
-        $persona->save();
+        $voto = Voto::find($request['voto']);
+        $voto -> voto = $voto['voto'] + 1;
+        $voto->save();
 
-        $voto = new Voto;
-        $data['voto'] = $voto['voto'] + 1;
-        $voto->update($data);
-
-        return 'resultado';
-
-        /*$data = request()->validate([
-            'voto' => 'required',
-            'paterno' => 'required',
-        ]);
-
-        dd($data);
-        $data['voto'] = $data['voto'] + 1;
-
-        $voto->update($data);*/
+        return redirect('voto/resultado');
 
     }
 

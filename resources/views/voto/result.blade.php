@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th>Nro.</th>
+                    <th>ID</th>
                     <th>Nombres</th>
                     <th>Porcentaje (%)</th>
                 </tr>
@@ -15,11 +16,12 @@
 
             <tbody>
                 <?php $i=1; ?>
-                @foreach ($resultados as $resultado)
+                @foreach ($result as $res)
                 <tr>
                     <td>{{$i++}}</td>
-                    <td>{{$resultado->nombre.' '.$resultado->paterno.' '.$resultado->materno}}</td>
-                    <td>{{$resultado->porcentaje}}</td>
+                    <td>{{$res->candidato->persona->id}}</td>
+                    <td>{{$res->candidato->persona->nombre.' '.$res->candidato->persona->apellidoP.' '.$res->candidato->persona->apellidoM}}</td>
+                    <td>{{$total = round(($res->voto * 100) / $res->sum('voto'), 2)}}</td>
                 </tr>
                 @endforeach
             </tbody>

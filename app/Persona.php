@@ -9,6 +9,9 @@ class Persona extends Model
 {
     protected $table = 'personas';
 
+    protected $fillable = [
+        'nombre', 'apellidoP', 'apellidoM','direccion', 'fechaNacimiento'
+    ];
     public function elector(){
         return $this->hasOne(Electore::class);
     }

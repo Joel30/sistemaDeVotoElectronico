@@ -15,12 +15,15 @@
                     @endif
                         <div class="row">
                             <div class="col-md-8 col-md-push-2">
-                                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='/candidato/nuevo'">Registrar Candidato</button>
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/persona/nuevo'">Registrar Personas</button>
                             </div>
                         </div><br>
                         <div class="row">
-                            <div class="col-md-8 col-md-push-2">
-                                <button type="button" class="btn btn-default btn-lg btn-block" onclick="location.href='/elector/nuevo'">Registrar Elector</button>
+                            <div class="col-md-4 col-md-push-2">
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/candidato/nuevo'">Registrar Candidato</button>
+                            </div>
+                            <div class="col-md-4 col-md-push-2">
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/elector/nuevo'">Registrar Elector</button>
                             </div>
                         </div>
                 </div>

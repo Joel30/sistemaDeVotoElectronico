@@ -66,10 +66,10 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+     public function edit($id){
+         $persona = Persona::find($id);
+         return view('persona.edit', compact('persona'));
+     }
 
     /**
      * Update the specified resource in storage.
@@ -78,19 +78,27 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+     public function update(Persona $persona)
+     {
+         $data = request()->validate([
+             'nombre' => '',
+             'apellidoP' => '',
+             'apellidoM' => '',
+             'direccion' => '',
+             'fechaNacimiento' => '',
+         ]);
+         $persona->update($data);
+         return redirect('persona');
+     }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+     public function destroy(Persona $persona)
+     {
+         $persona->delete();
+         return redirect('persona');
+     }
 }

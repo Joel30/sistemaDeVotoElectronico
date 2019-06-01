@@ -58,6 +58,23 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
+            .linksVoto > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 24px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                width: 50%;
+                border-radius: 18px 18px 18px 18px;
+                -moz-border-radius: 18px 18px 18px 18px;
+                -webkit-border-radius: 18px 18px 18px 18px;
+                border: lightblue 2px solid;
+                padding: 20px;
+                padding-left: 40px;
+                padding-right: 40px;
+            }
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -80,9 +97,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     Sistema de Votos
-                </div>
+                </div><br>
 
-                <div class="links">
+                <div class="linksVoto">
                     <a href="{{route('voto.index')}}">Votar</a>
                 </div>
             </div>

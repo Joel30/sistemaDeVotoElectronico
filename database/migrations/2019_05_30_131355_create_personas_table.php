@@ -38,6 +38,16 @@ class CreatePersonasTable extends Migration
             $table->foreign('persona_id')->references('id')->on('personas');
             $table->timestamps();
         });
+
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('persona_id');
+            $table->string('usuario');
+            $table->string('contraseña');
+            $tabke->string('rol');
+            $table->foreign('persona_id')->references('id')->on('personas');
+            $table->timestamps();
+        });
     }
 
     /**

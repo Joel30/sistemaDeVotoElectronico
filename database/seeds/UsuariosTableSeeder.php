@@ -12,11 +12,11 @@ class UsuariosTableSeeder extends Seeder
     public function run()
     {
         DB::table('usuarios')->insert([
-            'persona_id'=> '1',
-            'nombre'=> 'admin',
-            'password'=> 'admin',
-            'created_at' => date('Y-m-d'),
-            'updated_at' => date('Y-m-d'),
+            'persona_id'=> 1,
+            'usuario'=> 'admin',
+            'password'=> bcrypt('admin'),
+            'rol' => 'administrador'
+
         ]);
     }
 }

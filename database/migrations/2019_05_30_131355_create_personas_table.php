@@ -43,8 +43,8 @@ class CreatePersonasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('persona_id');
             $table->string('usuario');
-            $table->string('contraseña');
-            $tabke->string('rol');
+            $table->string('password');
+            $table->string('rol');
             $table->foreign('persona_id')->references('id')->on('personas');
             $table->timestamps();
         });
@@ -60,5 +60,6 @@ class CreatePersonasTable extends Migration
         Schema::dropIfExists('personas');
         Schema::dropIfExists('electores');
         Schema::dropIfExists('candidatos');
+        Schema::dropIfExists('usuarios');
     }
 }

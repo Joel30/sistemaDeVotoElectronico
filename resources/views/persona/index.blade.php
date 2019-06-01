@@ -25,11 +25,6 @@
                 <td>{{$persona->nombre.' '.$persona->apellidoP.' '.$persona->apellidoM}}</td>
                 <td>{{$persona->direccion}}</td>
                 <td>{{$persona->fechaNacimiento}}</td>
-                <!--td>
-                    <a href="{{--route('persona.edit', $persona->id)--}}">Editar</a> |
-                    <a href="{{--route('persona.destroy', $persona)--}}">Eliminar</a>
-
-                </td-->
                 <td>
                     <a href="{{route('persona.edit', $persona->id)}}"> Editar </a> |
                     <a href="{{route('persona.destroy', $persona)}}" onclick="return confirm('Esta seguro de eliminar a la persona con ci: {{ $persona->ci}}')"> Eliminar </a>

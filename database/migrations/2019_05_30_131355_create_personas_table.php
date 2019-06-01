@@ -46,6 +46,7 @@ class CreatePersonasTable extends Migration
             $table->string('password');
             $table->string('rol');
             $table->foreign('persona_id')->references('id')->on('personas');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('admin', 'AdminController@index'); 
+
 Route::get('persona', 'PersonaController@index')->name('persona.index');
 Route::get('persona/nuevo', 'PersonaController@create')->name('persona.create');
 Route::post('persona/guardar', 'PersonaController@store')->name('persona.store');

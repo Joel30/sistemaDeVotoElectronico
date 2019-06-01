@@ -4,6 +4,9 @@
   <title>Lista de personas en Coop</title>
 </head>
 <body>
+@extends('master')
+@section('content')
+<div class="panel-heading text-center">Tabla de Personas Registradas</div>
     <table width='70%' border='1' align='center'>
         <thead>
             <tr>
@@ -38,6 +41,8 @@
             @endforeach
         </tbody>
     </table>
-
+</div>   
+<br><br>
+@endsection   
 </body>
 </html>

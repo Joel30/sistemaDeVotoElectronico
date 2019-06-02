@@ -44,9 +44,14 @@
                         </div>
                         <br><br><br>
                         <div class="col-md-offset-3">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                        <button type="reset" class="btn btn-primary">Limpiar</button> 
-                        </div><br>
+                                <button id="btnSubmit" type="submit" class="btn btn-primary"><span></span>Enviar</button>
+                                <button type="reset" class="btn btn-primary">Limpiar</button> 
+                        </div>
+                        <!-- <div id="myAlert" class="alert alert-success collapse">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                Los datos se guardaron con exito!
+                        </div> -->
+                        <br>
                     {{Form::close()}}
                   </div>
             </div>
@@ -55,5 +60,14 @@
 </div>
 <br><br>
 @endsection    
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script type="text/javascript">
+        $(document).ready(function(){
+                $('#btnSubmit').click(function(){
+                        $('#myAlert').show('fade');
+                })
+        })
+</script> -->
 </body>
 </html>

@@ -22,12 +22,28 @@ class VotoController extends Controller
     }
 
     public function enter(Request $request) {
+        //dd($request);
+        $this->validate(request(),[
+            'ci' => 'required|numeric|exists:personas',
+        ]);
+
+        $e = Persona::where('ci', $request['ci'])->first();
+        $e = $e->elector;
+        //dd($e->voto);
+        if ($e == null) {
+            return redirect('voto')->with('mensaje', 'El CI no puede votar');
+        } if ($e->voto == 1) {
+            return redirect('voto')->with('mensaje', 'Usted ya realizo el respectivo voto');
+        }
+
         $electores = Persona::where('ci', $request['ci'])->first();
+        //$electores->elector->id;
         $candidatos = DB::table('personas')
             ->join('candidatos', 'personas.id','candidatos.persona_id')
             ->select('candidatos.id', (
                 DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
                 ->get();
+
         return view('voto.candidato', compact('electores', 'candidatos'));
     }
 
@@ -84,6 +100,12 @@ class VotoController extends Controller
      */
     public function update(Request $request)
     {
+        //dd($request);
+        $this->validate(request(),[
+            'voto' => 'required|numeric',
+        ]);
+
+
         $elector = Electore::find($request['elector']);
         $elector -> voto = 1;
         $elector->save();

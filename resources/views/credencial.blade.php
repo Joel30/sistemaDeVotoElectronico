@@ -26,6 +26,12 @@
                                 <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/elector/nuevo'">Registrar Elector</button>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-8 col-md-push-2">
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/register'">Registrar Personas</button>
+                            </div>
+                        </div><br>
+                        <a href="{{ route('register') }}">Register</a>
                 </div>
             </div>
         </div>

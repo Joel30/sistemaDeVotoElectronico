@@ -35,15 +35,6 @@
         </div>
     </div>
     <br><br>
-    <!-- <h2>EJEMPLOS PARA IMPLEMENTAR AL PROYECTO</h2>
-    <div class="alert alert-success" role="alert">
-         Usuario registrado con exito
-    </div> 
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar CI" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
     
     <script  src="{{ URL('js/popper.min.js') }}"></script>
     <script  src="{{ URL('js/bootstrap.min.js') }}"></script>

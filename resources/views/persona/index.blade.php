@@ -4,7 +4,7 @@
   <title>Lista de personas en Coop</title>
 </head>
 <body>
-@extends('master')
+@extends('layouts.app')
 @section('content')
 <div class="panel-heading text-center">Tabla de Personas Registradas</div>
     <table width='70%' border='1' align='center'>

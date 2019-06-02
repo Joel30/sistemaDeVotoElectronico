@@ -11,6 +11,7 @@
     <title>Sistema de Voto</title>
 
     <!-- Styles -->
+    <!-- <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}"> -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -28,9 +29,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Sistema de Votos
-                    </a>
+                    <a class="navbar-brand" href="{{ url('home') }}">Registrar</a>
+                    <a class="navbar-brand" href="{{ url('registro') }}">| Ver registros</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -46,6 +46,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <!--li><a href="{{-- route('register') --}}">Register</a></li-->
                         @else
+            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->usuario }} <span class="caret"></span>
@@ -53,10 +54,11 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ url('/register') }}">Registrar</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Cerrar Sesion
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

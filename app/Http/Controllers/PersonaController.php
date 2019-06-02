@@ -45,8 +45,7 @@ class PersonaController extends Controller
 
         $persona->save();
 
-        return view('credencial');
-
+        return redirect('persona.index');
     }
 
     /**

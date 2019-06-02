@@ -4,6 +4,9 @@
   <title>Lista de personas en Coop</title>
 </head>
 <body>
+@extends('layouts.app')
+@section('content')
+<div class="panel-heading text-center">Tabla de Electores Registrados</div>
     <table width='70%' border='1' align='center'>
         <thead>
             <tr>
@@ -25,5 +28,6 @@
             @endforeach
         </tbody>
     </table>
+@endsection       
 </body>
 </html>

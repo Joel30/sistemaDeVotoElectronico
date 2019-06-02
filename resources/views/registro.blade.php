@@ -15,23 +15,17 @@
                     @endif
                         <div class="row">
                             <div class="col-md-8 col-md-push-2">
-                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/persona/nuevo'">Registrar Personas</button>
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/persona'">Tabla Personas</button>
                             </div>
                         </div><br>
                         <div class="row">
                             <div class="col-md-4 col-md-push-2">
-                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/candidato/nuevo'">Registrar Candidato</button>
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/candidato'">Tabla Candidatos</button>
                             </div>
                             <div class="col-md-4 col-md-push-2">
-                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/elector/nuevo'">Registrar Elector</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-md-push-2">
-                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/register'">Registrar Personas</button>
+                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='/elector'">Tabla Electores</button>
                             </div>
                         </div><br>
-                        <a href="{{ route('register') }}">Register</a>
                 </div>
             </div>
         </div>

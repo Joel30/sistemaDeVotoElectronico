@@ -33,19 +33,36 @@ class PersonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function store(Request $data)
     {
-        $persona = new Persona;
-        $persona -> ci = $request['ci'];
-        $persona -> nombre = $request['nombre'];
-        $persona -> apellidoP = $request['apellidoP'];
-        $persona -> apellidoM = $request['apellidoM'];
-        $persona -> direccion = $request['direccion'];
-        $persona -> fechaNacimiento = $request['fechaNacimiento'];
+        $reglas = array ('ci' => 'required|numeric|unique:personas|digits:8',
+        'nombre' => 'required|string',
+        'apellidoP' => 'required|string|max:25',
+        'apellidoM' => 'required|string|max:25',
+        'fechaNacimiento' => 'required',
+        );
 
-        $persona->save();
-
-        return redirect('persona.index');
+        $errores = $this->validate(request(), $reglas);
+        if($errores){
+            $persona = new Persona;
+            $persona -> ci = $data['ci'];
+            $persona -> nombre = $data['nombre'];
+            $persona -> apellidoP = $data['apellidoP'];
+            $persona -> apellidoM = $data['apellidoM'];
+            $persona -> direccion = $data['direccion'];
+            $persona -> fechaNacimiento = $data['fechaNacimiento'];
+    
+            $persona->save();
+    
+            return redirect('persona');     
+        }
     }
 
     /**

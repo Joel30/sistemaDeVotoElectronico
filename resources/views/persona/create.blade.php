@@ -88,9 +88,15 @@
                                         @endif
                                 </div>
                         </div>
-                        <div class="col-md-offset-3">
-                                <button id="btnSubmit" type="submit" class="btn btn-primary"><span></span>Enviar</button>
-                                <button type="reset" class="btn btn-primary">Limpiar</button>
+                        <div class="form-group mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button id="btnSubmit" type="submit" class="btn btn-primary">
+                                    Enviar
+                                </button>
+                                <button type="reset" class="btn btn-primary">
+                                    Limpiar
+                                </button>
+                            </div>
                         </div>
                         <!-- <div id="myAlert" class="alert alert-success collapse">
                                 <a href="#" class="close" data-dismiss="alert">&times;</a>

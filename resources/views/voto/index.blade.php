@@ -21,7 +21,6 @@
                     <div class="alert alert-danger" role="alert">
                           {{session('mensaje')}}
                     </div>
-
                     @endif
                     {{Form:: label('ci', 'Nro de Carnet  ', ['class' => 'validationDefault01'])}}
                     {{Form:: text('ci', null, ['id' => 'ci', 'placeholder' => 'Introduzca el CI', 'required', 'class' => 'form-control'])}}
@@ -32,7 +31,6 @@
                     <div class="row justify-content-center">
                         <div class="col-md-4 ">
                             {{Form::submit('Ingresar', ['class' => 'btn btn-primary btn-block'])}}
-
                         </div>
                         <div class="col-md-4 ">
                             {{Form::reset('Borrar', ['class' => 'btn btn-secondary btn-block'])}}

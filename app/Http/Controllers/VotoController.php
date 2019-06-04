@@ -40,7 +40,7 @@ class VotoController extends Controller
         //$electores->elector->id;
         $candidatos = DB::table('personas')
             ->join('candidatos', 'personas.id','candidatos.persona_id')
-            ->select('candidatos.id', (
+            ->select('candidatos.id', 'ci', 'avatar',(
                 DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
                 ->get();
 
@@ -107,6 +107,10 @@ class VotoController extends Controller
 
 
         $elector = Electore::find($request['elector']);
+        //dd($elector);
+        if ($elector->voto == 1) {
+            return redirect('voto/candidatos');
+        }
         $elector -> voto = 1;
         $elector->save();
 

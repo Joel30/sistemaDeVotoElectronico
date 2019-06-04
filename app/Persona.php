@@ -10,7 +10,7 @@ class Persona extends Model
     protected $table = 'personas';
 
     protected $fillable = [
-        'nombre', 'apellidoP', 'apellidoM','direccion', 'fechaNacimiento'
+        'nombre', 'apellidoP', 'apellidoM','direccion', 'fechaNacimiento', 'avatar'
     ];
     public function elector(){
         return $this->hasOne(Electore::class);

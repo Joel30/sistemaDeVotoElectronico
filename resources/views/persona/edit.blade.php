@@ -5,7 +5,12 @@
 </head>
 <body>
 
-{{ Form::open(['route'=>['persona.update', 'id' => $persona->id],'method'=>'put']) }}
+{{ Form::open(['route'=>['persona.update', 'id' => $persona->id],'method'=>'put', 'files' => 'true']) }}
+
+        <img width="100px" src="{{Storage::url($persona->avatar)}}"><br>
+        {{Form:: label('avatar', "Avatar: ")}}
+        {{Form:: file('avatar', null, ['id' => 'avatar'])}}
+        <br>
         {{Form::label('ci', 'C.I.: ')}}
         {{Form::number('ci', $persona->ci, ['id' => 'ci', 'disabled'])}}
         <br><br>

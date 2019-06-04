@@ -48,7 +48,7 @@ class ElectorController extends Controller
          //dd($request);
          $electore = new Electore;
          $electore -> persona_id = $request['persona_id'];
-         $electore -> voto = 0;
+         //$electore -> voto = 0;
          //dd($elector);
          $electore->save();
          return redirect('elector');

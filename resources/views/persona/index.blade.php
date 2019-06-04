@@ -13,6 +13,7 @@
                 <th>Nro.</th>
                 <th>C.I.</th>
                 <th>Nombres</th>
+                <th>Imagen</th>
                 <th>Direccion</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Actualizar Datos</th>
@@ -26,6 +27,8 @@
                 <td>{{$i++}}</td>
                 <td>{{$persona->ci}}</td>
                 <td>{{$persona->nombre.' '.$persona->apellidoP.' '.$persona->apellidoM}}</td>
+                {{--dd($persona->avatar)--}}
+                <td><img width="100px" src="{{Storage::url($persona->avatar)}}"></td>
                 <td>{{$persona->direccion}}</td>
                 <td>{{$persona->fechaNacimiento}}</td>
                 <td>
@@ -36,8 +39,10 @@
             @endforeach
         </tbody>
     </table>
-</div>   
+
+
+</div>
 <br><br>
-@endsection   
+@endsection
 </body>
 </html>

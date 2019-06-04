@@ -53,15 +53,18 @@ class PersonaController extends Controller
         if($errores){
             $persona = new Persona;
             $persona -> ci = $data['ci'];
+            if ($data->hasFile('avatar')) {
+                $persona -> avatar = $data->file('avatar')->store('public/nuevo');
+            }
             $persona -> nombre = $data['nombre'];
             $persona -> apellidoP = $data['apellidoP'];
             $persona -> apellidoM = $data['apellidoM'];
             $persona -> direccion = $data['direccion'];
             $persona -> fechaNacimiento = $data['fechaNacimiento'];
-    
+
             $persona->save();
-    
-            return redirect('persona');     
+
+            return redirect('persona');
         }
     }
 
@@ -94,15 +97,21 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function update(Persona $persona)
+     public function update(Request $request, $id)
      {
+         $persona = Persona::find($id);
+
          $data = request()->validate([
              'nombre' => '',
+             'avatar' => 'image', //jpeg, png, bmp, gif o svg
              'apellidoP' => '',
              'apellidoM' => '',
              'direccion' => '',
              'fechaNacimiento' => '',
          ]);
+         if ($request->hasFile('avatar')) {
+             $data['avatar'] = $request->file('avatar')->store('public/nuevo');
+         }
          $persona->update($data);
          return redirect('persona');
      }

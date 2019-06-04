@@ -53,7 +53,7 @@ class CandidatoController extends Controller
 
         $voto = new Voto;
         $voto -> candidato_id = $candidato->id;
-        $voto -> voto = 0;
+        //$voto -> voto = 0;
         $voto->save();
 
         return redirect('candidato');

@@ -16,6 +16,7 @@ class CreatePersonasTable extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ci');
+            $table->string('avatar')->default('/nuevo/default.jpg');
             $table->string('nombre');
             $table->string('apellidoP');
             $table->string('apellidoM');
@@ -27,7 +28,7 @@ class CreatePersonasTable extends Migration
         Schema::create('electores', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('persona_id');
-            $table->integer('voto');
+            $table->integer('voto')->default(0);;
             $table->foreign('persona_id')->references('id')->on('personas');
             $table->timestamps();
         });

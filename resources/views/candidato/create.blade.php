@@ -5,23 +5,24 @@
 </head>
 <body>
 @extends('layouts.app')
-    @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">Registrar Candidato</div>
-    {{ Form::open(['route'=>'candidato.store','method'=>'post']) }}
-        <br><br>
-        {{Form::label('persona_id', 'Candidato: ')}}
-        {{Form::select('persona_id', $candidatos, null)}}
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    {{Form::close()}}
-                   </div>
-              </div>
-            </div>
-        </div>
-    </div>   
-    @endsection    
+@section('content')
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <h3>REGISTRAR CANDIDATO</h3><br>
+        <p class="text-monospace">Seleccione a la persona que desea registrar como candidato</p>
+            {{ Form::open(['route'=>'candidato.store','method'=>'post']) }}
+                {{Form::label('persona_id', 'Candidato: ')}}
+                {{Form::select('persona_id', $candidatos, null)}}
+                <!-- <div class="row justify-content-center">
+                    <div class="col-md-4"> -->
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    <!-- </div>
+                </div>     -->
+            {{Form::close()}}
+        </div>    
+    </div>
+</div>
+@endsection      
 </body>
 </html>

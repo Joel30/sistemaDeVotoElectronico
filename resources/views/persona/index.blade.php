@@ -2,21 +2,27 @@
 <html>
 <head>
   <title>Lista de personas en Coop</title>
+  <style>
+    table{
+        margin: auto;
+        width: 70% !important; 
+    }
+  </style>
 </head>
 <body>
 @extends('layouts.app')
 @section('content')
-<div class="panel-heading text-center">Tabla de Personas Registradas</div>
-    <table width='70%' border='1' align='center'>
-        <thead>
+<div class="panel-heading text-center">Tabla de Electores Registrados</div>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <th>Nro.</th>
-                <th>C.I.</th>
-                <th>Nombres</th>
-                <th>Imagen</th>
-                <th>Direccion</th>
-                <th>Fecha de Nacimiento</th>
-                <th>Actualizar Datos</th>
+                <th scope="col">Nro.</th>
+                <th scope="col">C.I.</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Actualizar Datos</th>
             </tr>
         </thead>
 
@@ -39,9 +45,7 @@
             @endforeach
         </tbody>
     </table>
-
-
-</div>
+</div>    
 <br><br>
 @endsection
 </body>

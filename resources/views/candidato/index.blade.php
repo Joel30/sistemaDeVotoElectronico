@@ -2,17 +2,23 @@
 <html>
 <head>
   <title>Lista de personas en Coop</title>
+  <style>
+    table{
+        margin: auto;
+        width: 50% !important; 
+    }
+  </style>
 </head>
 <body>
 @extends('layouts.app')
 @section('content')
 <div class="panel-heading text-center">Tabla de Candidatos Registrados</div>
-    <table width='70%' border='1' align='center'>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <th>Nro.</th>
-                <th>ID</th>
-                <th>Nombres</th>
+                <th scope="col">Nro.</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombres</th>
             </tr>
         </thead>
 

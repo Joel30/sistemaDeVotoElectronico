@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Persona;
+
 class PersonaController extends Controller
 {
     /**
@@ -37,30 +38,35 @@ class PersonaController extends Controller
      /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array  $request
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function store(Request $data)
+    public function store(Request $request)
     {
         $reglas = array ('ci' => 'required|numeric|unique:personas|digits:8',
         'nombre' => 'required|string',
-        'apellidoP' => 'required|string|max:25',
-        'apellidoM' => 'required|string|max:25',
-        'fechaNacimiento' => 'required',
+        'apellidoP' => 'required|string|max:30',
+        'apellidoM' => 'required|string|max:30',
+        'direccion' => 'required|string|max:25',
+        // 'fechaNacimiento' => 'required|date|before_or_equal:'.\Carbon\Carbon::now()->subYears(18)->format('Y-m-d'),
+        'fechaNacimiento' => 'required|date|before_or_equal:'. date('2001-m-d'),
+        );
+        $mensajes = array(
+            'fechaNacimiento.before_or_equal' => 'La persona debe tener al menos 18 años',
         );
 
-        $errores = $this->validate(request(), $reglas);
+        $errores = $this->validate(request(), $reglas, $mensajes);
         if($errores){
             $persona = new Persona;
-            $persona -> ci = $data['ci'];
-            if ($data->hasFile('avatar')) {
-                $persona -> avatar = $data->file('avatar')->store('public/nuevo');
+            $persona -> ci = $request['ci'];
+            if ($request->hasFile('avatar')) {
+                $persona -> avatar = $request->file('avatar')->store('public/nuevo');
             }
-            $persona -> nombre = $data['nombre'];
-            $persona -> apellidoP = $data['apellidoP'];
-            $persona -> apellidoM = $data['apellidoM'];
-            $persona -> direccion = $data['direccion'];
-            $persona -> fechaNacimiento = $data['fechaNacimiento'];
+            $persona -> nombre = $request['nombre'];
+            $persona -> apellidoP = $request['apellidoP'];
+            $persona -> apellidoM = $request['apellidoM'];
+            $persona -> direccion = $request['direccion'];
+            $persona -> fechaNacimiento = $request['fechaNacimiento'];
 
             $persona->save();
 

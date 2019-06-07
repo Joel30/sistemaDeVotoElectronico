@@ -1,12 +1,10 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Registro</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
@@ -87,5 +85,6 @@
             </div>
         </div>
     </div>
+        <a href="{{ url('/home') }}">Volver Atras</a>
 </div>
 @endsection

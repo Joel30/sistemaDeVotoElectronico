@@ -44,7 +44,7 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         $reglas = array ('ci' => 'required|numeric|unique:personas|digits:8',
-        'nombre' => 'required|string',
+        'nombre' => 'required|string|max:60',
         'apellidoP' => 'required|string|max:30',
         'apellidoM' => 'required|string|max:30',
         'direccion' => 'required|string|max:25',
@@ -70,7 +70,8 @@ class PersonaController extends Controller
 
             $persona->save();
 
-            return redirect('persona');
+            session()->flash('mensaje', 'se guardó con éxito');
+            return redirect('persona/nuevo');
         }
     }
 
@@ -108,12 +109,13 @@ class PersonaController extends Controller
          $persona = Persona::find($id);
 
          $data = request()->validate([
-             'nombre' => '',
              'avatar' => 'image', //jpeg, png, bmp, gif o svg
-             'apellidoP' => '',
-             'apellidoM' => '',
-             'direccion' => '',
-             'fechaNacimiento' => '',
+             'nombre' => 'required|string|max:60',
+             'apellidoP' => 'required|string|max:30',
+             'apellidoM' => 'required|string|max:30',
+             'direccion' => 'required|string|max:25',
+             // 'fechaNacimiento' => 'required|date|before_or_equal:'.\Carbon\Carbon::now()->subYears(18)->format('Y-m-d'),
+             'fechaNacimiento' => 'required|date|before_or_equal:'. date('2001-m-d'),
          ]);
          if ($request->hasFile('avatar')) {
              $data['avatar'] = $request->file('avatar')->store('public/nuevo');

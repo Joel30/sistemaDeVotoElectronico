@@ -10,9 +10,10 @@
   </style>
 </head>
 <body>
-@extends('layouts.app')
+@extends('layouts.mostrar')
 @section('content')
-<div class="panel-heading text-center">Tabla de Electores Registrados</div>
+<br>
+<div class="panel-heading text-center">TABLA DE PERSONAS REGISTRADAS</div>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -46,7 +47,6 @@
         </tbody>
     </table>
 </div>    
-<br><br>
 @endsection
 </body>
 </html>

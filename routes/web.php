@@ -31,7 +31,7 @@ Route::get('candidato/nuevo', 'CandidatoController@create')->name('candidato.cre
 Route::post('candidato/guardar', 'CandidatoController@store')->name('candidato.store');
 
 
-Route::get('elector', 'ElectorController@index')->name('electot.index');
+Route::get('elector', 'ElectorController@index')->name('elector.index');
 Route::get('elector/nuevo', 'ElectorController@create')->name('elector.create');
 Route::post('elector/guardar', 'ElectorController@store')->name('elector.store');
 

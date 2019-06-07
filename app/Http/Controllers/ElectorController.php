@@ -9,6 +9,7 @@ use App\Persona;
 
 class ElectorController extends Controller
 {
+    protected $redirectTo = '/home';
     /**
      * Display a listing of the resource.
      *

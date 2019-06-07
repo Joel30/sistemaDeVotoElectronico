@@ -4,7 +4,7 @@
   <title>Nueva persona</title>
 </head>
 <body>
-@extends('layouts.app')
+@extends('layouts.registrar')
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">

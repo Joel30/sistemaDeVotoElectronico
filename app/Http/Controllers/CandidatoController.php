@@ -10,6 +10,7 @@ use App\Voto;
 
 class CandidatoController extends Controller
 {
+    protected $redirectTo = '/home';
     /**
      * Display a listing of the resource.
      *

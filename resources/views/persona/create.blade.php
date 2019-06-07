@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.registrar')
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -7,7 +7,6 @@
                 <div class="card-header">Registrar Persona</div>
                 <div class="card-body">
                     {{ Form::open(['route'=>'persona.store','method'=>'post', 'files' => 'true']) }}
-
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
                             <div class="col-md-6">
@@ -84,7 +83,6 @@
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('fechaNacimiento') }}</strong>
                                             </span>
-
                                         @endif
                                 </div>
                         </div>
@@ -97,11 +95,16 @@
                                     Limpiar
                                 </button>
                             </div>
+                        @if (session()->has('mensaje'))
+                        <br>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                                <strong>La Persona</strong> {{ session()->get('mensaje') }} .
+                            </div>
+                        @endif    
                         </div>
-                        <!-- <div id="myAlert" class="alert alert-success collapse">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                Los datos se guardaron con exito!
-                        </div> -->
                     {{ Form::close() }}
                   </div>
             </div>
@@ -110,14 +113,5 @@
 </div>
 <br><br>
 @endsection
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
-</script>
-<script type="text/javascript">
-        $(document).ready(function(){
-                $('#btnSubmit').click(function(){
-                        $('#myAlert').show('fade');
-                })
-        })
-</script> -->
 </body>
 </html>

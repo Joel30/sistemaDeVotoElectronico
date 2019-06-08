@@ -21,15 +21,11 @@
                 <td>{{$res->candidato->persona->nombre.' '.$res->candidato->persona->apellidoP.' '.$res->candidato->persona->apellidoM}}</td>
                 <?php $total = round(($res->voto * 100) / $res->sum('voto'), 2) ?>
                 <td><h6><?php echo $total ?> %</h6></td>
-                @if($total == 0)
-                    <td width='70%'><div class="progress-bar bg-white" style='width:<?php echo $total ?>%'>
-                        <b class="text-white">.</b>
-                    </div></td>
-                @else
-                <td width='70%'><div class="progress-bar bg-info" style='width:<?php echo $total ?>%'>
-                    <b class="text-info">.</b>
-                </div></td>
-                @endif
+                <td width='70%'>
+                    <div class="progress mt-2">
+                        <div class="progress-bar bg-info" role="progressbar" style='width:<?php echo $total ?>%'  aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </td>
             </tr>
             @endforeach
         </tbody>

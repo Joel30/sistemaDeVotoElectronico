@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+<div class="sticky-top mt-4 ml-5 row" >
+    <div class="">
+        <img src="{{Storage::url($electores->avatar)}}" class="rounded-circle mr-4 border border-dark" width="60px" height="60px">
+    </div>
+    <div class="">
+        <b>{{$electores->nombre.' '.$electores->apellidoP.' '.$electores->apellidoM}}<br>
+        {{$electores->ci}}</b>
+    </div>
+</div>
 <div class="container mt-5" >
     <?php $i=1; ?>
     {{Form::open(['route' => 'voto.update', 'method' => 'post'])}}

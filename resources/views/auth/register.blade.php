@@ -20,7 +20,15 @@
                         <div class="form-group row">
                             <label for="persona_id" class="col-md-4 col-form-label text-md-right">Persona</label>
                             <div class="col-md-6">
-                                {{Form::select('persona_id', $personas, null, ["class" => "form-control".$err, "required", "autofocus"])}}
+                                <select class="form-control{{ $errors->has('persona_id') ? ' is-invalid' : '' }}" name="persona_id" id="persona_id" required>
+                                @foreach($personas as $per)
+                                    @if ($per->candidato == null)
+                                        @if ($per->usuario == null)
+                                            <option value="{{$per->id}}">{{$per->name}}</option>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </select>
                                 @if ($errors->has('persona_id'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('persona_id') }}</strong>
@@ -47,7 +55,7 @@
                             <label for="rol" class="col-md-4 col-form-label text-md-right">Rol</label>
 
                             <div class="col-md-6">
-                                <select class="custom-select" name="rol" id="rol" required>
+                                <select class="custom-select" name="rol" id="rol" required disabled>
                                      <option value="admin">Admin</option>
                                 </select>
                             </div>

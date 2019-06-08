@@ -54,9 +54,9 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $persona = Persona::select('id', DB::raw("CONCAT(ci,': ', nombre,' ',  apellidoP,' ', apellidoM) AS name"))->pluck('name', 'id');
+        /*$persona = Persona::select('id', DB::raw("CONCAT(ci,': ', nombre,' ',  apellidoP,' ', apellidoM) AS name"))->pluck('name', 'id');*/
 
-
+        $persona = Persona::select('id', DB::raw("CONCAT(ci,': ', nombre,' ',  apellidoP,' ', apellidoM) AS name"))->get();
         return view('auth.register')->with('personas', $persona);
     }
     /**

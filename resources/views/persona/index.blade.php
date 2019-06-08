@@ -5,7 +5,7 @@
   <style>
     table{
         margin: auto;
-        width: 70% !important; 
+        width: 70% !important;
     }
   </style>
 </head>
@@ -39,14 +39,14 @@
                 <td>{{$persona->direccion}}</td>
                 <td>{{$persona->fechaNacimiento}}</td>
                 <td>
-                    <a href="{{route('persona.edit', $persona->id)}}"> Editar </a> |
-                    <a href="{{route('persona.destroy', $persona)}}" onclick="return confirm('Esta seguro de eliminar a la persona con ci: {{ $persona->ci}}')"> Eliminar </a>
+                    <a class="badge badge-pill badge-info mr-2" href="{{route('persona.edit', $persona->id)}}"> Editar </a>
+                    <a class="badge badge-pill badge-danger" href="{{route('persona.destroy', $persona)}}" onclick="return confirm('Esta seguro de eliminar a la persona con ci: {{ $persona->ci}}')"> Eliminar </a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</div>    
+</div>
 @endsection
 </body>
 </html>

@@ -10,14 +10,14 @@
     </head>
     <body>
         <div id="voto">
-            <div class="bg-dark" style="background-color: #EFFBFB;">
-                <nav class="navbar navbar-dark navbar-light navbar-static-top py-3" style="background-color: #EFFBFB;">
+            <div class="bg-dark" style="background-color: #f9f9f9;">
+                <nav class="navbar navbar-dark navbar-light navbar-static-top py-3" style="background-color: #f9f9f9;">
                     <div>
-                        <a class="navbar-brand ml-5 px-5 text-info btn btn-outline-info" href="{{ url('/') }}">Inicio</a>
+                        <a class="navbar-brand ml-5 px-4 py-0 text-secondary btn btn-outline-secondary" href="{{ url('/') }}">Inicio</a>
                         @yield('title0')
                     </div>
 
-                    <b class="navbar-brand text-info mr-5">@yield('title1')</b>
+                    <b class="navbar-brand text-secondary mr-5">@yield('title1')</b>
                 </nav>
             </div>
 

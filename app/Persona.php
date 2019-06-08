@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Electore;
 use App\Candidato;
+use App\User;
+
 class Persona extends Model
 {
     protected $table = 'personas';
@@ -18,5 +20,9 @@ class Persona extends Model
 
     public function candidato(){
         return $this->hasOne(Candidato::class);
+    }
+
+    public function usuario(){
+        return $this->hasOne(User::class);
     }
 }

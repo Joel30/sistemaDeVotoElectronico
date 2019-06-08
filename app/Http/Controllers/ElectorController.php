@@ -25,6 +25,10 @@ class ElectorController extends Controller
          return view('elector.index')->with('electores', $elector);
      }
 
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
      /**
       * Show the form for creating a new resource.
       *
@@ -46,14 +50,18 @@ class ElectorController extends Controller
       */
      public function store(Request $request)
      {
-         //dd($request);
+         $data = request()->validate([
+             'persona_id' => 'unique:electores'
+         ], [
+             'persona_id.unique' => 'La persona ya fue registrada.'
+         ]);
          $electore = new Electore;
          $electore -> persona_id = $request['persona_id'];
          //$electore -> voto = 0;
          //dd($elector);
          $electore->save();
-         return redirect('elector');
-
+         session()->flash('mensaje', 'Registro exitoso');
+         return redirect('elector/nuevo');
      }
 
     /**

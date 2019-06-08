@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Persona;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -47,6 +52,13 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
+    public function showRegistrationForm()
+    {
+        $persona = Persona::select('id', DB::raw("CONCAT(ci,': ', nombre,' ',  apellidoP,' ', apellidoM) AS name"))->pluck('name', 'id');
+
+
+        return view('auth.register')->with('personas', $persona);
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -56,8 +68,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'persona_id' => 'required|numeric',
-            'usuario' => 'required|string|max:255',
+            'persona_id' => 'required|numeric|unique:usuarios',
+            'usuario' => 'required|string|unique:usuarios',
             'rol' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -77,5 +89,14 @@ class RegisterController extends Controller
             'rol' => $data['rol'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+
+        session()->flash('mensaje', 'Registro exitoso');
+        return redirect('register');
     }
 }

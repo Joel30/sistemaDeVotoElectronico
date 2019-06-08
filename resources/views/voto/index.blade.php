@@ -2,7 +2,7 @@
 @extends('layouts.voto')
 
 @section('title0')
-    <a class="navbar-brand px-5 text-info btn btn-outline-info" href="{{ url('/voto/resultado') }}">Resultados</a>
+    <a class="navbar-brand px-4 py-0 text-secondary btn btn-outline-secondary" href="{{ url('/voto/resultado') }}">Resultados</a>
 @endsection
 
 @section('title1')
@@ -18,14 +18,20 @@
             <div class="form-row">
                 <div class="col-md-12 ">
                     @if (session('mensaje'))
-                    <div class="alert alert-danger" role="alert">
-                          {{session('mensaje')}}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{session('mensaje')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     @endif
+                    <?php if ($errors->has('ci')) $err = ' is-invalid';else $err = '';?>
                     {{Form:: label('ci', 'Nro de Carnet  ', ['class' => 'validationDefault01'])}}
-                    {{Form:: text('ci', null, ['id' => 'ci', 'placeholder' => 'Introduzca el CI', 'required', 'class' => 'form-control'])}}
+                    {{Form:: text('ci', null, ['id' => 'ci', 'placeholder' => 'Introduzca el CI', 'required', 'class' => "form-control".$err])}}
                     @if ($errors->has('ci'))
-                        <p class="text-danger text-right">{{$errors->first('ci')}}</p>
+                    <span class="invalid-feedback" align ="right">
+                        <strong>{{$errors->first('ci')}}</strong>
+                    </span>
                     @endif
                     <br>
                     <div class="row justify-content-center">

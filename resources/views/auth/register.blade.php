@@ -6,15 +6,21 @@
             <div class="card">
                 <div class="card-header">Registro</div>
                 <div class="card-body">
+                    @if (session('mensaje'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session()->get('mensaje') }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
-
+                        <?php if ($errors->has('persona_id')) $err = ' is-invalid';else $err = '';?>
                         <div class="form-group row">
-                            <label for="persona_id" class="col-md-4 col-form-label text-md-right">persona_id</label>
-
+                            <label for="persona_id" class="col-md-4 col-form-label text-md-right">Persona</label>
                             <div class="col-md-6">
-                                <input id="persona_id" type="text" class="form-control{{ $errors->has('persona_id') ? ' is-invalid' : '' }}" name="persona_id" value="{{ old('persona_id') }}" required autofocus>
-
+                                {{Form::select('persona_id', $personas, null, ["class" => "form-control".$err, "required", "autofocus"])}}
                                 @if ($errors->has('persona_id'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('persona_id') }}</strong>
@@ -41,13 +47,9 @@
                             <label for="rol" class="col-md-4 col-form-label text-md-right">Rol</label>
 
                             <div class="col-md-6">
-                                <input id="rol" type="text" class="form-control{{ $errors->has('rol') ? ' is-invalid' : '' }}" name="rol" value="{{ old('rol') }}" required>
-
-                                @if ($errors->has('rol'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('rol') }}</strong>
-                                    </span>
-                                @endif
+                                <select class="custom-select" name="rol" id="rol" required>
+                                     <option value="admin">Admin</option>
+                                </select>
                             </div>
                         </div>
 

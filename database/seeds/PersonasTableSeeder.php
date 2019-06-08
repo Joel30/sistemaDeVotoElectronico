@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Persona;
 
 class PersonasTableSeeder extends Seeder
 {
@@ -11,9 +12,13 @@ class PersonasTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('personas')->insert([
-            'created_at' => date('Y-m-d'),
-            'updated_at' => date('Y-m-d'),
+        Persona::create([
+            "ci" => "80706050",
+            "nombre" => "Jesus",
+            "apellidoP" => "Fernandez",
+            "apellidoM" => "Ruiz",
+            "direccion" => "Las Banderas",
+            "fechaNacimiento" => "1990-01-01"
         ]);
     }
 }

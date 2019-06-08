@@ -26,6 +26,11 @@ class CandidatoController extends Controller
         return view('candidato.index')->with('candidatos', $candidato);
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,6 +52,11 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+            'persona_id' => 'unique:candidatos'
+        ], [
+            'persona_id.unique' => 'La persona ya fue registrada.'
+        ]);
         $candidato = new Candidato;
         $candidato -> persona_id = $request['persona_id'];
 
@@ -56,8 +66,8 @@ class CandidatoController extends Controller
         $voto -> candidato_id = $candidato->id;
         //$voto -> voto = 0;
         $voto->save();
-
-        return redirect('candidato');
+        session()->flash('mensaje', 'Registro exitoso');
+        return redirect('candidato/nuevo');
 
     }
 

@@ -16,7 +16,6 @@
                     @endif
                     <form method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
-                        <?php if ($errors->has('persona_id')) $err = ' is-invalid';else $err = '';?>
                         <div class="form-group row">
                             <label for="persona_id" class="col-md-4 col-form-label text-md-right">Persona</label>
                             <div class="col-md-6">

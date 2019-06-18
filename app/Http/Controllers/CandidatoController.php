@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Candidato;
 use App\Persona;
+use App\Electore;
 use App\Voto;
 
 class CandidatoController extends Controller
@@ -64,8 +65,12 @@ class CandidatoController extends Controller
 
         $voto = new Voto;
         $voto -> candidato_id = $candidato->id;
-        //$voto -> voto = 0;
         $voto->save();
+
+        $electore = new Electore;
+        $electore -> persona_id = $request['persona_id'];
+        $electore->save();
+
         session()->flash('mensaje', 'Registro exitoso');
         return redirect('candidato/nuevo');
 

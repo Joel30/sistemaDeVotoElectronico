@@ -19,7 +19,13 @@
             @foreach ($result as $res)
             <tr>
                 <td>{{$res->candidato->persona->nombre.' '.$res->candidato->persona->apellidoP.' '.$res->candidato->persona->apellidoM}}</td>
-                <?php $total = round(($res->voto * 100) / $res->sum('voto'), 2) ?>
+
+                <?php if ($res->sum('voto') != 0) {
+                    $total = round(($res->voto * 100) / $res->sum('voto'), 2);
+                } else {
+                    $total = 0;
+                }
+                ?>
                 <td><h6><?php echo $total ?> %</h6></td>
                 <td width='70%'>
                     <div class="progress mt-2">

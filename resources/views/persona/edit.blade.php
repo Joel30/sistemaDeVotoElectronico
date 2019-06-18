@@ -132,15 +132,10 @@
                                 <button id="btnSubmit" type="submit" class="btn btn-primary">
                                     Actualizar
                                 </button>
-                                <button type="reset" class="btn btn-primary">
+                                <button type="reset" class="btn btn-secondary">
                                     Deshacer
                                 </button>
                             </div>
-                            @if (!$errors)
-                            <div class="alert alert-success" role="alert">
-                              <strong>Thank You GOd</strong> I did It.
-                            </div>
-                            @endif
                         </div>
                     {{ Form::close() }}
                   </div>

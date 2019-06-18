@@ -91,7 +91,7 @@
                                 <button id="btnSubmit" type="submit" class="btn btn-primary">
                                     Enviar
                                 </button>
-                                <button type="reset" class="btn btn-primary">
+                                <button type="reset" class="btn btn-secondary">
                                     Limpiar
                                 </button>
                             </div>

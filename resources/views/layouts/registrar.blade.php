@@ -14,28 +14,36 @@
     <!-- <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}"> -->
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="css/fontawesome.min">
     <script  src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light py-4" style="background-color: #f9f9f9;">
             <div class="container">
-                    <!-- Collapsed Hamburger -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">Home</a>
-                    <a class="navbar-brand btn btn-primary" href="{{ url('persona/nuevo') }}">Registrar Persona:</a>
+                    <a class="navbar-brand btn btn-outline-light" href="{{ url('/home') }}"> <img alt="Brand" src="{{asset('icons/h.png')}}" width="20px"> </a>
+                    <div class="btn-group btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-info" href="{{ url('persona/nuevo') }}">
+                             Registrar Persona:
+                        </a>
+                        <a class="btn btn-outline-secondary" href="{{ url('elector/nuevo') }}">
+                            Elector
+                        </a>
+                        <a class="btn btn-outline-secondary" href="{{ url('candidato/nuevo') }}">
+                            Candidato
+                        </a>
+                    </div> 
+                    <!-- <a class="navbar-brand btn btn-outline-light" href="{{ url('/home') }}"> <img alt="Brand" src="{{asset('icons/h.png')}}" width="20px"> </a>
+                    <a class="navbar-brand btn btn-info" href="{{ url('persona/nuevo') }}">Registrar Persona:</a>
                     <a class="navbar-brand btn btn-secondary" href="{{ url('elector/nuevo') }}"> Elector</a>
-                    <a class="navbar-brand btn btn-secondary" href="{{ url('candidato/nuevo') }}"> Candidato</a>
+                    <a class="navbar-brand btn btn-secondary" href="{{ url('candidato/nuevo') }}"> Candidato</a> -->
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <!--ul class="navbar-nav mr-auto">
+                    <!-- <ul class="navbar-nav mr-auto">
                         <a class="nav-link" href="{{-- url('/') --}}">Home</a>
-                    </ul-->
+                    </ul> -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

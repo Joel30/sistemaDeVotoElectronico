@@ -21,6 +21,8 @@
         <div class="col-md-4">
             <?php $data = 0; ?>
             <select class="form-control" name="year" id="year">
+                <option value="{{date('Y')}}">
+                </option>
                 @foreach($candidatos as $candidato)
                     @if($data != substr($candidato->created_at, 0, 4)))
                     <option value="{{substr($candidato->created_at, 0, 4)}}">
@@ -44,7 +46,7 @@ $year = date('Y');
         $year = $_GET['year'];
     }
 ?>
-    <div class="panel-heading text-center my-4">TABLA DE CANDIDATOS REGISTRADOS</div>
+    <div class="panel-heading text-center my-4">CANDIDATOS REGISTRADOS<b class="text-info"> Gestión: {{$year}}</b></div>
         <table class="table">
             <thead class="thead-dark">
                 <tr>

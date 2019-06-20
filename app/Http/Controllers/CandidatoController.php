@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use App\Candidato;
 use App\Persona;
 use App\Electore;
@@ -58,11 +59,20 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
+        $c = Candidato::whereYear('created_at', '=', date('Y'))->get();
+        $c = $c->where('persona_id', $request['persona_id'])->first();
+        if ($c == null) {
+            $c = $request['persona_id'];
+        } else {
+            $c = null;
+        }
         $data = request()->validate([
-            'persona_id' => 'unique:candidatos'
+            'persona_id' => Rule::unique('candidatos')
+            ->ignore($c, 'persona_id')
         ], [
             'persona_id.unique' => 'La persona ya fue registrada.'
         ]);
+
         $candidato = new Candidato;
         $candidato -> persona_id = $request['persona_id'];
 
@@ -72,7 +82,7 @@ class CandidatoController extends Controller
         $voto -> candidato_id = $candidato->id;
         $voto->save();
 
-        $e = Electore::find($request['persona_id']);
+        $e = Electore::where('persona_id',$request['persona_id'])->first();
 
         if ($e == null) {
             $electore = new Electore;

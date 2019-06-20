@@ -42,6 +42,7 @@ class VotoController extends Controller
             ->join('candidatos', 'personas.id','candidatos.persona_id')
             ->select('candidatos.id', 'ci', 'avatar',(
                 DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
+                ->whereYear('candidatos.created_at', date('Y'))
                 ->get();
 
         return view('voto.candidato', compact('electores', 'candidatos'));
@@ -76,7 +77,7 @@ class VotoController extends Controller
      */
     public function show()
     {
-        $result = Voto::all();
+        $result = Voto::whereYear('created_at', date('Y'))->get();
         return view('voto.result')->with('result', $result);
     }
 

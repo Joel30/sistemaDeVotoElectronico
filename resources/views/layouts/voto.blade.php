@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Buscar Socios con prestamos</title>
+        <title>Sistema de Votos</title>
 
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <script  src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>

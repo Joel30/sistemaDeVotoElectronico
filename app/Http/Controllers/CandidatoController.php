@@ -17,12 +17,16 @@ class CandidatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     //19:35
+
+    public function index(Request $request)
     {
         $candidato = DB::table('personas')
             ->join('candidatos', 'personas.id','candidatos.persona_id')
-            ->select('candidatos.id', (
+            ->select('candidatos.id', 'candidatos.created_at', (
                 DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
+                ->orderBy('created_at', 'asc')
                 ->get();
         return view('candidato.index')->with('candidatos', $candidato);
     }
@@ -41,6 +45,7 @@ class CandidatoController extends Controller
     {
         $persona = Persona::select('id', (
             DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
+            ->where('created_at', '>=', date('Y'))
             ->pluck('name', 'id');
         return view('candidato.create')->with('candidatos', $persona);
     }
@@ -67,10 +72,13 @@ class CandidatoController extends Controller
         $voto -> candidato_id = $candidato->id;
         $voto->save();
 
-        $electore = new Electore;
-        $electore -> persona_id = $request['persona_id'];
-        $electore->save();
+        $e = Electore::find($request['persona_id']);
 
+        if ($e == null) {
+            $electore = new Electore;
+            $electore -> persona_id = $request['persona_id'];
+            $electore->save();
+        }
         session()->flash('mensaje', 'Registro exitoso');
         return redirect('candidato/nuevo');
 

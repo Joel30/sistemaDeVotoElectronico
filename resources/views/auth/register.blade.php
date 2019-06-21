@@ -54,9 +54,10 @@
                             <label for="rol" class="col-md-4 col-form-label text-md-right">Rol</label>
 
                             <div class="col-md-6">
-                                <select class="custom-select" name="rol" id="rol" required disabled>
+                                <input id="rol" type="text" class="form-control" name="rol" value="administrador" required disabled>
+                                <!--select class="custom-select" name="rol" id="rol" required disabled>
                                      <option value="admin">Admin</option>
-                                </select>
+                                </select-->
                             </div>
                         </div>
 
@@ -81,7 +82,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
+                        {{Form::hidden('rol', 'administrador')}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -13,7 +13,7 @@
             <div class="bg-dark" style="background-color: #f9f9f9;">
                 <nav class="navbar navbar-dark navbar-light navbar-static-top py-3" style="background-color: #f9f9f9;">
                     <div>
-                        <a class="navbar-brand ml-5 px-4 py-0 text-secondary btn btn-outline-secondary" href="{{ url('/') }}">Inicio</a>
+                        <a class="navbar-brand ml-5 px-4 py-0 text-secondary btn btn-outline-secondary" href="javascript:history.back(-1);">Inicio</a>
                         @yield('title0')
                     </div>
 

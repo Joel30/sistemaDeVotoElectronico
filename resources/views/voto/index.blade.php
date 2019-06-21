@@ -15,6 +15,9 @@
         <div class="col-md-6">
             <p class="display-4 text-center">INGRESE A VOTAR</p><br>
             {{Form:: open(['route'=>'voto.enter', 'method' => 'get'])}} <!--post-->
+            @if($res == 1)
+            <fieldset disabled>
+            @endif
             <div class="form-row">
                 <div class="col-md-12 ">
                     @if (session('mensaje'))
@@ -44,6 +47,14 @@
                     </div>
                 </div>
             </div>
+            @if($res == 1)
+            </fieldset>
+
+            <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+                <b>El Sistema se encuentra Cerrado</b>
+            </div>
+            @endif
+
             {{Form::close()}}
         </div>
     </div>

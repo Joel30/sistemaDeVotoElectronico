@@ -8,6 +8,7 @@ use App\Voto;
 use App\Electore;
 use App\Candidato;
 use App\Persona;
+use App\Sistema;
 
 class VotoController extends Controller
 {
@@ -18,7 +19,15 @@ class VotoController extends Controller
      */
     public function index()
     {
-        return view('voto.index');
+        $s = Sistema::first();
+        if ($s != null) {
+            $res = $s->estado;
+            return view('voto.index',compact('res'));
+        }else {
+            $res = 1;
+            return view('voto.index',compact('res'));
+        }
+
     }
 
     public function enter(Request $request) {
@@ -75,11 +84,11 @@ class VotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    /*public function show()
     {
         $result = Voto::whereYear('created_at', date('Y'))->get();
         return view('voto.result')->with('result', $result);
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.

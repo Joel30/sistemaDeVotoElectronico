@@ -67,6 +67,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd($data);
         return Validator::make($data, [
             'persona_id' => 'required|numeric|unique:usuarios',
             'usuario' => 'required|string|unique:usuarios',
@@ -83,6 +84,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //dd($data);
         return User::create([
             'persona_id' => $data['persona_id'],
             'usuario' => $data['usuario'],

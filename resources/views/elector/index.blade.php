@@ -26,11 +26,11 @@
         <tbody>
             <?php $i=1; ?>
             @foreach ($electores as $elector)
-            <tr>
-                <td>{{$i++}}</td>
-                <td>{{$elector->id}}</td>
-                <td>{{$elector->name}}</td>
-            </tr>
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$elector->ci}}</td>
+                    <td>{{$elector->name}}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>

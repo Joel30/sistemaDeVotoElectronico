@@ -17,9 +17,10 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Nro.</th>
-                <th scope="col">C.I.</th>
+                <th scope="col">Nro.</th>          
                 <th scope="col">Nombres</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">C.I.</th>
             </tr>
         </thead>
 
@@ -28,8 +29,9 @@
             @foreach ($electores as $elector)
                 <tr>
                     <td>{{$i++}}</td>
-                    <td>{{$elector->ci}}</td>
                     <td>{{$elector->name}}</td>
+                    <td>{{$elector->direccion}}</td>
+                    <td>{{$elector->ci}}</td>
                 </tr>
             @endforeach
         </tbody>

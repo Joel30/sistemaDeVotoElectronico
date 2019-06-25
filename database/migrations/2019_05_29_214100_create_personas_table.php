@@ -28,7 +28,7 @@ class CreatePersonasTable extends Migration
         Schema::create('electores', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('persona_id');
-            $table->integer('voto')->default(0);;
+            $table->integer('voto')->default(0);
             $table->foreign('persona_id')->references('id')->on('personas');
             $table->timestamps();
         });

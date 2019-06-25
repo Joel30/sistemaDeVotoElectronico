@@ -20,7 +20,7 @@ class ElectorController extends Controller
          $elector = DB::table('personas')
              ->join('electores', 'personas.id','electores.persona_id')
              ->select('electores.id', ( 
-                 DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")),"ci")
+                 DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")),"ci", "direccion")
                  ->get();      
          return view('elector.index')->with('electores', $elector);
      }

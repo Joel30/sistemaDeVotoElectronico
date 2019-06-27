@@ -51,7 +51,7 @@ $year = date('Y');
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Nro.</th>
-                    <th scope="col">ID</th>
+                    <!--th scope="col">ID</th-->
                     <th scope="col">Nombres</th>
                 </tr>
             </thead>
@@ -62,7 +62,7 @@ $year = date('Y');
                 <tr>
                     @if($year == substr($candidato->created_at, 0, 4))
                         <td>{{$i++}}</td>
-                        <td>{{$candidato->id}}</td>
+                        <!--td>{{--$candidato->id--}}</td-->
                         <td>{{$candidato->name}}</td>
                     @endif
                 </tr>

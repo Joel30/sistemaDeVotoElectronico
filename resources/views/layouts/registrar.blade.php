@@ -27,13 +27,13 @@
                         <a class="btn btn-outline-info" href="{{ url('persona/nuevo') }}">
                              Registrar Persona:
                         </a>
-                        <a class="btn btn-outline-secondary" href="{{ url('elector/nuevo') }}">
+                        <!--a class="btn btn-outline-secondary" href="{{-- url('elector/nuevo') --}}">
                             Elector
-                        </a>
+                        </a-->
                         <a class="btn btn-outline-secondary" href="{{ url('candidato/nuevo') }}">
                             Candidato
                         </a>
-                    </div> 
+                    </div>
                     <!-- <a class="navbar-brand btn btn-outline-light" href="{{ url('/home') }}"> <img alt="Brand" src="{{asset('icons/h.png')}}" width="20px"> </a>
                     <a class="navbar-brand btn btn-info" href="{{ url('persona/nuevo') }}">Registrar Persona:</a>
                     <a class="navbar-brand btn btn-secondary" href="{{ url('elector/nuevo') }}"> Elector</a>

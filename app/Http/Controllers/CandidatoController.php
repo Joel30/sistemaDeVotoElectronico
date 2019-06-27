@@ -47,7 +47,8 @@ class CandidatoController extends Controller
         $persona = Persona::select('id', (
             DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
             ->where('created_at', '>=', date('Y'))
-            ->pluck('name', 'id');
+            ->get();
+            //->pluck('name', 'id');
         return view('candidato.create')->with('candidatos', $persona);
     }
 

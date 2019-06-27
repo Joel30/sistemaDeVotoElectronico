@@ -21,7 +21,7 @@
                         <div class="form-group row">
                             <label for="ci" class="col-md-4 col-form-label text-md-right">CI</label>
                             <div class="col-md-6">
-                                    <input id="ci" type="number" class="form-control{{ $errors->has('ci') ? ' is-invalid' : '' }}" name="ci" value="{{ null }}" required autofocus>
+                                    <input id="ci" type="number" class="form-control{{ $errors->has('ci') ? ' is-invalid' : '' }}" name="ci" value="{{ old('ci') }}" required autofocus>
                                     @if ($errors->has('ci'))
                                         <span class="invalid-feedback">
                                             <strong>{{ $errors->first('ci') }}</strong>
@@ -32,7 +32,7 @@
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre</label>
                             <div class="col-md-6">
-                                    <input id="nombre" type="text" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" name="nombre" value="{{ null }}" required autofocus>
+                                    <input id="nombre" type="text" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" name="nombre" value="{{ old('nombre')  }}" required autofocus>
                                     @if ($errors->has('nombre'))
                                         <span class="invalid-feedback">
                                             <strong>{{ $errors->first('nombre') }}</strong>
@@ -43,7 +43,7 @@
                         <div class="form-group row">
                         <label for="apellidoP" class="col-md-4 col-form-label text-md-right">Apellido Paterno</label>
                                 <div class="col-md-6">
-                                        <input id="apellidoP" type="text" class="form-control{{ $errors->has('apellidoP') ? ' is-invalid' : '' }}" name="apellidoP" value="{{ null }}" required autofocus>
+                                        <input id="apellidoP" type="text" class="form-control{{ $errors->has('apellidoP') ? ' is-invalid' : '' }}" name="apellidoP" value="{{ old('apellidoP')  }}" required autofocus>
                                         @if ($errors->has('apellidoP'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('apellidoP') }}</strong>
@@ -54,7 +54,7 @@
                         <div class="form-group row">
                         <label for="apellidoM" class="col-md-4 col-form-label text-md-right">Apellido Materno</label>
                                 <div class="col-md-6">
-                                        <input id="apellidoM" type="text" class="form-control{{ $errors->has('apellidoM') ? ' is-invalid' : '' }}" name="apellidoM" value="{{ null }}" required autofocus>
+                                        <input id="apellidoM" type="text" class="form-control{{ $errors->has('apellidoM') ? ' is-invalid' : '' }}" name="apellidoM" value="{{ old('apellidoM')  }}" required autofocus>
                                         @if ($errors->has('apellidoM'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('apellidoM') }}</strong>
@@ -66,7 +66,7 @@
                         <div class="form-group row">
                         <label for="direccion" class="col-md-4 col-form-label text-md-right">Direccion</label>
                                 <div class="col-md-6">
-                                        <input id="direccion" type="text" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" name="direccion" value="{{ null }}" required autofocus>
+                                        <input id="direccion" type="text" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" name="direccion" value="{{ old('direccion')  }}" required autofocus>
                                         @if ($errors->has('direccion'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('direccion') }}</strong>
@@ -78,7 +78,7 @@
                         <div class="form-group row">
                         <label for="fechaNacimiento" class="col-md-4 col-form-label text-md-right">Fecha de Nacimiento</label>
                                 <div class="col-md-6">
-                                        <input id="fechaNacimiento" type="date" class="form-control{{ $errors->has('fechaNacimiento') ? ' is-invalid' : '' }}" name="fechaNacimiento" value="{{ null }}" required autofocus>
+                                        <input id="fechaNacimiento" type="date" class="form-control{{ $errors->has('fechaNacimiento') ? ' is-invalid' : '' }}" name="fechaNacimiento" value="{{ old('fechaNacimiento')  }}" required autofocus>
                                         @if ($errors->has('fechaNacimiento'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('fechaNacimiento') }}</strong>
@@ -103,7 +103,7 @@
                             </button>
                                 <strong>La Persona</strong> {{ session()->get('mensaje') }} .
                             </div>
-                        @endif    
+                        @endif
                         </div>
                     {{ Form::close() }}
                   </div>

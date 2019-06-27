@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Persona;
+use App\Electore;
 
 class PersonaController extends Controller
 {
@@ -48,8 +49,8 @@ class PersonaController extends Controller
         'apellidoP' => 'required|string|max:30',
         'apellidoM' => 'required|string|max:30',
         'direccion' => 'required|string|max:25',
-        // 'fechaNacimiento' => 'required|date|before_or_equal:'.\Carbon\Carbon::now()->subYears(18)->format('Y-m-d'),
-        'fechaNacimiento' => 'required|date|before_or_equal:'. date('2001-m-d'),
+        'fechaNacimiento' => 'required|date|before_or_equal:'.\Carbon\Carbon::now()->subYears(18)->format('Y-m-d').'|after_or_equal:'.\Carbon\Carbon::now()->subYears(120)->format('Y-m-d'),
+        //'fechaNacimiento' => 'required|date|before_or_equal:'. date('2001-m-d'),
         );
         $mensajes = array(
             'fechaNacimiento.before_or_equal' => 'La persona debe tener al menos 18 años',
@@ -69,6 +70,10 @@ class PersonaController extends Controller
             $persona -> fechaNacimiento = $request['fechaNacimiento'];
 
             $persona->save();
+            $p = Persona::select('id')->where('ci', $request['ci'])->first()->id;
+            $electore = new Electore;
+            $electore -> persona_id = $p;
+            $electore->save();
 
             session()->flash('mensaje', 'se guardó con éxito');
             return redirect('persona/nuevo');

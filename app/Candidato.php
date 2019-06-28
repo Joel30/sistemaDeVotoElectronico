@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Persona;
 use App\Voto;
+use App\Balotaje;
 
 class Candidato extends Model
 {
@@ -16,6 +17,10 @@ class Candidato extends Model
 
     public function voto(){
         return $this->hasOne(Voto::class);
+    }
+
+    public function balotaje(){
+        return $this->hasOne(Second::class);
     }
 
 }

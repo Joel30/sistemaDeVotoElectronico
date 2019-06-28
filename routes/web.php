@@ -37,6 +37,8 @@ Route::get('voto/candidatos', 'VotoController@enter')->name('voto.enter');
 Route::post('voto/actualizar', 'VotoController@update')->name('voto.update');
 Route::get('voto/resultado', 'SistemaController@show')->name('voto.show');
 Route::post('/home', 'SistemaController@update')->name('sistema.update');
+Route::post('/home/second', 'BalotajeController@store')->name('second.store');
+Route::post('/home/second/update', 'BalotajeController@update')->name('second.update');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

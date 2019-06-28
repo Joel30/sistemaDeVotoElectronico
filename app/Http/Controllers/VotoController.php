@@ -9,6 +9,7 @@ use App\Electore;
 use App\Candidato;
 use App\Persona;
 use App\Sistema;
+use App\Balotaje;
 
 class VotoController extends Controller
 {
@@ -47,14 +48,34 @@ class VotoController extends Controller
 
         $electores = Persona::where('ci', $request['ci'])->first();
         //$electores->elector->id;
-        $candidatos = DB::table('personas')
-            ->join('candidatos', 'personas.id','candidatos.persona_id')
-            ->select('candidatos.id', 'ci', 'avatar',(
-                DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
-                ->whereYear('candidatos.created_at', date('Y'))
-                ->get();
 
-        return view('voto.candidato', compact('electores', 'candidatos'));
+        $balotaje = Balotaje::whereYear('created_at', date('Y'))->get();
+
+        // $candidato = App\Candidato::where('id', 1)->orWhere('id', 2)->get()
+        if (sizeof($balotaje) == 2) {
+            $const = 0;
+            $candidatos = DB::table('personas')
+                ->join('candidatos', 'personas.id','candidatos.persona_id')
+                ->select('candidatos.id', 'ci', 'avatar',(
+                    DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
+                    ->whereYear('candidatos.created_at', date('Y'))
+                    ->where('candidatos.id', $balotaje[0]->candidato_id)
+                    ->orWhere('candidatos.id', $balotaje[1]->candidato_id)
+                    ->get();
+
+            return view('voto.candidato', compact('electores', 'candidatos', 'const'));
+        } else {
+            $const = 1;
+            $candidatos = DB::table('personas')
+                ->join('candidatos', 'personas.id','candidatos.persona_id')
+                ->select('candidatos.id', 'ci', 'avatar',(
+                    DB::raw("CONCAT(nombre,' ',apellidoP,' ',apellidoM) AS name")))
+                    ->whereYear('candidatos.created_at', date('Y'))
+                    ->get();
+
+            return view('voto.candidato', compact('electores', 'candidatos', 'const'));
+        }
+
     }
 
     /**
@@ -124,7 +145,8 @@ class VotoController extends Controller
         $elector -> voto = 1;
         $elector->save();
 
-        $voto = Voto::find($request['voto']);
+
+        $voto = Voto::where('candidato_id', $request['voto'])->first();
         $voto -> voto = $voto['voto'] + 1;
         $voto->save();
 

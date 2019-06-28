@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sistema;
 use App\Voto;
+use App\Balotaje;
+use App\Electore;
 class SistemaController extends Controller
 {
     public function create()
@@ -20,6 +22,7 @@ class SistemaController extends Controller
 
     public function show()
     {
+
         $s = Sistema::first();
         if ($s != null) {
             if ($s->estado == 0) {
@@ -27,8 +30,16 @@ class SistemaController extends Controller
                 return view('voto.result', compact('res'));
             } else {
                 $res = 1;
-                $result = Voto::whereYear('created_at', date('Y'))->get();
-                return view('voto.result',compact('result', 'res'));
+                $balotaje = Balotaje::whereYear('created_at', date('Y'))->get();
+
+                if (sizeof($balotaje) == 2) {
+                    $result = Balotaje::whereYear('created_at', date('Y'))->get();
+                    return view('voto.result',compact('result', 'res'));
+                } else {
+                    $result = Voto::whereYear('created_at', date('Y'))->get();
+                    return view('voto.result',compact('result', 'res'));
+                }
+
             }
         }else {
             $res = 0;
@@ -52,8 +63,15 @@ class SistemaController extends Controller
             $estado -> estado = 0;
         } else {
             $estado ->estado = 1;
+
+            $elector = Electore::all();
+            foreach ($elector as $key) {
+                $key->voto = 0;
+                $key->save();
+            }
         }
         $estado->save();
+        session()->flash('mensaje', $estado->estado);
         return redirect('home');
 
     }

@@ -33,7 +33,7 @@
                     <div class="col-md-7">
                         <select class="form-control{{ $errors->has('persona_id') ? ' is-invalid' : '' }}" name="persona_id" id="persona_id" required>
                         @foreach($candidatos as $per)
-                            @if ($per->candidato == null)
+                            @if (App\Candidato::where('persona_id', $per->id)->whereYear('created_at', date('Y'))->first() == null)
                                 <option value="{{$per->id}}">{{$per->name}}</option>
                             @endif
                         @endforeach

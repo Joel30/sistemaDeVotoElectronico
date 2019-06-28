@@ -33,6 +33,7 @@
             <div class="card">
                 <div class="card-header">SISTEMA DE VOTO</div>
                 <div class="card-body">
+
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -50,9 +51,27 @@
                             <div class="col-md-8 ">
                                 <a class="btn btn-outline-warning btn-lg btn-block" href="{{ url('/voto/resultado') }}">Resultados</a>
                             </div>
+                        </div> <br>
+
+                        @if (App\Sistema::all()->first()->estado == 1)
+                            {{ Form::open(['route'=>'second.store','method'=>'post'])}}
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <input type="submit" class="btn btn-outline-warning btn-lg btn-block" value="Segunda vuelta electoral" name="voto" onclick="return confirm('Se dara inicio a la segunda vuelta electoral')">
+                                    </div>
+                                </div>
+                            {{Form::close()}}
+                        @endif
+                        @if (session('mensajes'))
+                        <div class="row justify-content-center">
+                            <div class="alert alert-warning alert-dismissible fade show col-md-8" role="alert">
+                                <strong>{{ session()->get('mensajes') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
-
-
+                        @endif
                     @else
                     {{ Form::open(['route'=>'sistema.update','method'=>'post'])}}
                         <div class="form-group row justify-content-center">

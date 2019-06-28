@@ -15,8 +15,15 @@
     </div>
 </div>
 <div class="container mt-5" >
-    <?php $i=1; ?>
-    {{Form::open(['route' => 'voto.update', 'method' => 'post'])}}
+    <?php $i=1;
+        $route = "";
+        if ($const == 0) {
+            $route = "second.update";
+        } else {
+            $route = "voto.update";
+        }
+    ?>
+    {{Form::open(['route' => $route, 'method' => 'post'])}}
     <div class="row clearfix">
         @foreach ($candidatos as $candidato)
         <div class="col-md-4">

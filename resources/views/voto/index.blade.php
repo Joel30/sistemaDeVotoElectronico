@@ -28,6 +28,14 @@
                         </button>
                     </div>
                     @endif
+                    @if (session('mensajeS'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{session('mensajeS')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     <?php if ($errors->has('ci')) $err = ' is-invalid';else $err = '';?>
                     {{Form:: label('ci', 'Nro de Carnet  ', ['class' => 'validationDefault01'])}}
                     {{Form:: text('ci', null, ['id' => 'ci', 'placeholder' => 'Introduzca el CI', 'required', 'class' => "form-control".$err])}}

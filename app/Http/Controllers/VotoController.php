@@ -150,7 +150,7 @@ class VotoController extends Controller
         $voto -> voto = $voto['voto'] + 1;
         $voto->save();
 
-        return redirect('voto/resultado');
+        return redirect('voto')->with('mensajeS', 'Voto exitoso');
 
     }
 
